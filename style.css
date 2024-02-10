@@ -208,7 +208,6 @@ main{
     .container {
         flex-direction: column;
         padding: 30px 15px;
-        margin: 5px 0 5px 0;
         align-items: center;
     }
     .hangman-box img {
