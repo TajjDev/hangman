@@ -7,12 +7,12 @@ const gameModal = document.querySelector(".game-modal");
 const playAgainBtn = gameModal.querySelector("button");
 
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded',async function () {
     // Function to display the welcome page for 5 seconds
     function showWelcomePage() {
         const welcomePage = document.querySelector('.welcome-page');
         welcomePage.innerHTML =
-         `<body class='wel'>
+         `<body>
             <div class="welcome-page">
                 <h1>welcome to the hangman game</h1>
                 <div id="wel">
@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const mainPage = document.querySelector('.main-page');
         welcomePage.style.display = 'flex';
         mainPage.style.display = 'none';
-
         // Hide the welcome page after 5 seconds and show the main page
         setTimeout(function () {
             mainPage.style.display = 'flex';
@@ -38,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // Initializing game variables
-let currentWord, correctLetters, wrongGuessCount;
+let current, correctLetters, wrongGuessCount;
 const maxGuesses = 6;
 
 const resetGame = () => {
@@ -95,11 +94,10 @@ const initGame = (button, clickedLetter) => {
 
 // Creating keyboard buttons and adding event listeners
 for (let i = 97; i <= 122; i++) {
-    const button = document.createElement("button");
-    button.innerText = String.fromCharCode(i);
-    keyboardDiv.appendChild(button);
-    button.addEventListener("click", (e) => initGame(e.target, String.fromCharCode(i)));
+    const btn = document.createElement("button");
+    btn.innerText = String.fromCharCode(i);
+    keyboardDiv.appendChild(btn);
+    btn.addEventListener("click", (e) => initGame(e.target, String.fromCharCode(i)));
 }
-
 getRandomWord();
 playAgainBtn.addEventListener("click", getRandomWord);
